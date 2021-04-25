@@ -1,0 +1,148 @@
+{
+    "users": [
+        {
+            "email": "admin@test.fr",
+            "password": "$2a$10$ox/uV.QrocvUwLcDOgdaKOICXBG5BPQHwMmoI76PVbct4nnIy2p0C",
+            "role": "admin",
+            "prenom": "admin",
+            "nom": "admin",
+            "image": "",
+            "id": 1,
+            "created_at": ""
+        },
+        {
+            "email": "user@test.fr",
+            "password": "$2a$10$ox/uV.QrocvUwLcDOgdaKOICXBG5BPQHwMmoI76PVbct4nnIy2p0C",
+            "role": "user",
+            "prenom": "user",
+            "nom": "user",
+            "image": "",
+            "id": 2,
+            "created_at": ""
+        }
+    ],
+    "articles": [
+        {
+            "id": 1,
+            "nom": "Nouvel iMac 24p",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/imac-24-purple-selection-hero-202104?wid=892&hei=820&&.v=1617492406000",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 1449,
+            "user_id": 1,
+            "categorie_id": 1,
+            "created_at": ""
+        },
+        {
+            "id": 2,
+            "nom": "iMac 21,5p",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/imac-215-selection-hero-201706?wid=892&hei=820&&qlt=80&.v=1603396634000",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 1249,
+            "user_id": 1,
+            "categorie_id": 1,
+            "created_at": ""
+        },
+        {
+            "id": 3,
+            "nom": "iMac 27p",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/imac-27-selection-hero-202008?wid=892&hei=820&&qlt=80&.v=1594932848000",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 1999,
+            "user_id": 1,
+            "categorie_id": 1,
+            "created_at": ""
+        },
+        {
+            "id": 4,
+            "nom": "MacBook pro 13p",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp13touch-silver-select-202005_GEO_EMEA_LANG_FR?wid=892&hei=820&&qlt=80&.v=1587460574825",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 1449,
+            "user_id": 1,
+            "categorie_id": 2,
+            "created_at": ""
+        },
+        {
+            "id": 5,
+            "nom": "MacBook pro 16p",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16touch-silver-select-201911_GEO_FR?wid=892&hei=820&&qlt=80&.v=1572654951406",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 2690,
+            "user_id": 1,
+            "categorie_id": 2,
+            "created_at": ""
+        },
+        {
+            "id": 6,
+            "nom": "iPad pro",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-pro-12-11-select-202104_GEO_FR_FMT_WHH?wid=2000&hei=2000&fmt=jpeg&qlt=80&.v=1617865124000",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 899,
+            "user_id": 1,
+            "categorie_id": 3,
+            "created_at": ""
+        },
+        {
+            "id": 7,
+            "nom": "iPad air",
+            "image": "https://www.apple.com/fr/ipad-air/images/overview/use-cases/leisure_music__dtx553w2o7yq_small_2x.jpg",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 669,
+            "user_id": 1,
+            "categorie_id": 3,
+            "created_at": ""
+        },
+        {
+            "id": 8,
+            "nom": "iPhone 12 pro",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;.v=1604021663000",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 1159,
+            "user_id": 1,
+            "categorie_id": 4,
+            "created_at": ""
+        },
+        {
+            "id": 9,
+            "nom": "iPhone 12",
+            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;.v=1617135051000",
+            "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
+            "prix": 809,
+            "user_id": 1,
+            "categorie_id": 4,
+            "created_at": ""
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "nom": "iMac",
+            "image": "https://www.apple.com/v/mac/home/bd/images/familybrowser/imac_24__e0tdvilut5qq_large.svg",
+            "user_id": 1
+        },
+        {
+            "id": 2,
+            "nom": "MacBook",
+            "image": "https://www.apple.com/v/mac/home/bd/images/familybrowser/macbook_pro_16_light__cialfoihbk02_large.svg",
+            "user_id": 1
+        },
+        {
+            "id": 3,
+            "nom": "iPad",
+            "image": "https://www.apple.com/v/ipad/home/bm/images/chapternav/ipadair_light__fwcr6ummn722_large.svg",
+            "user_id": 1
+        },
+        {
+            "id": 4,
+            "nom": "iPhone",
+            "image": "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_single_camera__c8fs0xdplqy6_large_2x.png",
+            "user_id": 1
+        },
+        {
+            "id": 5,
+            "nom": "Accessoires",
+            "image": "https://www.apple.com/v/mac/home/bd/images/familybrowser/mac_accessories_light__bow96z0024qa_large.svg",
+            "user_id": 1
+        }
+    ]
+}

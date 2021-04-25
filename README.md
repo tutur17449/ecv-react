@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Rendu React-Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Groupe de 3
+- A rendre avant le 15 mai à 00h00/14 mai 23h59
+- Envoyer le repo a : jrmbourel@gmail.com
+- Dans le readme, les noms/prenoms de tous les participants doivent être inscrit
 
-## Available Scripts
+## Outils à utiliser
 
-In the project directory, you can run:
+- [json-server](https://github.com/typicode/json-server)
+- [Redux](https://redux.js.org/)
+- [Redux-Thunk](https://github.com/reduxjs/redux-thunk)
+- [React-paginate](https://github.com/AdeleD/react-paginate)
 
-### `npm start`
+## Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Profile
+- Edition profile
+- Articles
+- Article
+- Accueil
+- Register
+- Login
+- Edition d'articles
+- Creation d'articles
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Contenu des pages
 
-### `npm test`
+### Accueil
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Afficher les trois derniers articles
 
-### `npm run build`
+### Profile
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Afficher toutes les informations de l'utilisateur (nom, prénom, âge, photo de profil)
+- Bouton permettant à l'utilisateur de modifier son profil
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Articles
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Pagination
+- Seule la personne ayant cree son article peut le supprimer
 
-### `npm run eject`
+### Article
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Afficher les informations (titre, image, description, prix)
+- Pouvoir choisir la quantité
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Composants requis
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Header (connexion/deconnexion)
+- Footer
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Models
 
-## Learn More
+### User
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Nom
+- Prenom
+- Image (url)
+- Role
+- Email
+- Date de creation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Article
 
-### Code Splitting
+- Nom
+- Image
+- Description
+- Prix
+- user_id
+- Date de creation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Bonus
 
-### Analyzing the Bundle Size
+- Rechercher un article
+- Filtrer par catégorie
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Model
 
-### Making a Progressive Web App
+### Category
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Nom
+- Image
+- user_id
 
-### Advanced Configuration
+## Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Creation de categories
+- Edition de categories
 
-### Deployment
+### Accueil
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Afficher toutes les catégories (seul la personne ayant creer la categorie peut la supprimer)

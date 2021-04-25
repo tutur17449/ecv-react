@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthProvider } from "./hooks/useAuth";
+import { Provider } from "react-redux";
+import Home from "./pages/Home";
+import Articles from "./pages/Articles";
+import Article from "./pages/Article";
+import CreateArticle from "./pages/CreateArticle";
+import EditArticle from "./pages/EditArticle";
+import EditCategorie from "./pages/EditCategorie";
+import CreateCategorie from "./pages/CreateCategorie";
+import Categories from "./pages/Categories";
+import UserProfile from "./pages/UserProfile";
+import EditProfile from "./pages/EditProfile";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import store from "./store";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Provider store={store}>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/articles/:id/edit" component={EditArticle} />
+            <Route path="/articles/create" component={CreateArticle} />
+            <Route path="/articles/:id" component={Article} />
+            <Route path="/articles" component={Articles} />
+            <Route path="/categories/:id/edit" component={EditCategorie} />
+            <Route path="/categories/create" component={CreateCategorie} />
+            <Route path="/categories" component={Categories} />
+            <Route path="/profile" component={UserProfile} />
+            <Route path="/profile/edit" component={EditProfile} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </Switch>
+        </Router>
+      </Provider>
+    </AuthProvider>
   );
 }
 
