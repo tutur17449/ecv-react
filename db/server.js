@@ -37,6 +37,7 @@ server.post("/api/auth/login", (req, res) => {
   }
 
   const validPwd = bcrypt.compareSync(password, user.password);
+
   if (!validPwd) {
     return res.status(400).send({
       status: 400,
@@ -54,16 +55,14 @@ server.post("/api/auth/login", (req, res) => {
     status: 200,
     message: "User connected",
     data: {
-      id: user.id,
-      email: user.email,
-      role: user.role,
-      token: token,
+      user,
+      token,
     },
   });
 });
 
 server.post("/api/auth/register", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, prenom, nom, image } = req.body;
   const { db } = req.app;
 
   let user = db.get("users").find({ email: email }).value();
@@ -77,8 +76,12 @@ server.post("/api/auth/register", (req, res) => {
 
   let newUser = {
     id: suid.generate(),
-    email: email,
-    password: password,
+    email,
+    password,
+    prenom,
+    nom,
+    image,
+    created_at: new Date(),
     role: "user",
   };
 
@@ -143,9 +146,7 @@ server.get("/api/auth/checkToken", (req, res) => {
     status: 200,
     message: "User check",
     data: {
-      id: user.id,
-      email: user.email,
-      role: user.role,
+      ...user,
     },
   });
 });

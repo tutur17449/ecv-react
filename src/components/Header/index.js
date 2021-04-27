@@ -14,7 +14,7 @@ import {
 import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -42,18 +42,16 @@ const Header = () => {
           {user ? (
             <UncontrolledDropdown>
               <DropdownToggle nav caret>
-                {user.name}
+                {user.nom}
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <Link to="/profil">
+                  <Link to="/profile">
                     <span className="dropdown-item">Mon profil</span>
                   </Link>
                 </DropdownItem>
-                <DropdownItem>
-                  <Link to="/">
-                    <span className="dropdown-item">Se déconnecter</span>
-                  </Link>
+                <DropdownItem onClick={logout}>
+                  <span className="dropdown-item">Se déconnecter</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (data) => {
     return httpClient.post(`/api/auth/login`, data).then((res) => {
-      setUser(res.data.data.data);
+      setUser(res.data.data.user);
       localStorage.setItem("er-t", res.data.data.token);
     });
   };
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
       .get(`/api/auth/checkToken`)
       .then((res) => setUser(res.data.data));
   };
-  const logout = async () => {
+  const logout = () => {
     localStorage.removeItem("er-t");
     setUser(null);
   };
