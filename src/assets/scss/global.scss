@@ -1,1 +1,17 @@
 @import "./config.scss";
+
+#root {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  font-size: 1rem;
+  line-height: 1.42859;
+  font-weight: 400;
+  letter-spacing: -0.016em;
+  font-family: SF Pro Text, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica,
+    Arial, sans-serif;
+}

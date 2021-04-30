@@ -12,6 +12,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import useAuth from "../../hooks/useAuth";
+import "./styles.scss";
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -21,7 +22,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar expand="md">
         <Link to="/">
           <span className="navbar-brand">Accueil</span>
         </Link>

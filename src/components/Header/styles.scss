@@ -1,0 +1,27 @@
+@import "/src/assets/scss/config.scss";
+
+.navbar {
+  background-color: $color-dark;
+  color: $color-light !important;
+  .nav-link,
+  .navbar-brand {
+    color: $color-light;
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .nav-item,
+  .dropdown-item {
+    a {
+      text-decoration: none !important;
+    }
+  }
+
+  .dropdown-item {
+    &:active {
+      background-color: $color-grey;
+      color: initial;
+    }
+  }
+}

@@ -16,6 +16,7 @@ import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
 import validateFields from "./formRegister.validator";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const { register } = useAuth();
@@ -80,7 +81,7 @@ const RegisterForm = () => {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col lg="6" className="m-auto pt-5">
           {globalError.visible && (
             <Alert
               color="danger"
@@ -95,14 +96,16 @@ const RegisterForm = () => {
               {globalError.message}
             </Alert>
           )}
-          <Form onSubmit={onSubmit}>
+          <h1>Veuillez vous inscrire</h1>
+          <hr />
+          <Form onSubmit={onSubmit} className="mt-5">
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
               <Input
                 type="email"
                 name="email"
                 id="exampleEmail"
-                placeholder="with a placeholder"
+                placeholder="john.doe@example.com"
                 value={formData.email}
                 onChange={onChange}
                 invalid={formError.email !== "" && true}
@@ -112,12 +115,12 @@ const RegisterForm = () => {
               )}
             </FormGroup>
             <FormGroup>
-              <Label for="examplePassword">Password</Label>
+              <Label for="examplePassword">Mot de passe</Label>
               <Input
                 type="password"
                 name="password"
                 id="examplePassword"
-                placeholder="password placeholder"
+                placeholder="******"
                 value={formData.password}
                 onChange={onChange}
                 invalid={formError.password !== "" && true}
@@ -132,7 +135,7 @@ const RegisterForm = () => {
                 type="text"
                 name="prenom"
                 id="prenom"
-                placeholder="prenom placeholder"
+                placeholder="John"
                 value={formData.prenom}
                 onChange={onChange}
                 invalid={formError.prenom !== "" && true}
@@ -147,7 +150,7 @@ const RegisterForm = () => {
                 type="text"
                 name="nom"
                 id="nom"
-                placeholder="nom placeholder"
+                placeholder="Doe"
                 value={formData.nom}
                 onChange={onChange}
                 invalid={formError.nom !== "" && true}
@@ -162,7 +165,7 @@ const RegisterForm = () => {
                 type="text"
                 name="image"
                 id="image"
-                placeholder="image placeholder"
+                placeholder="https://ma-photo-de-profil.fr"
                 value={formData.image}
                 onChange={onChange}
                 invalid={formError.image !== "" && true}
@@ -171,10 +174,14 @@ const RegisterForm = () => {
                 <FormFeedback>{formError.image}</FormFeedback>
               )}
             </FormGroup>
-            <Button type="submit" disabled={isLoading}>
-              Submit
+            <Button type="submit" disabled={isLoading} className="w-100">
+              Inscription
             </Button>
           </Form>
+          <div>
+            <span>Déjà inscrit ? </span>
+            <Link to="/login">connectez-vous</Link>
+          </div>
         </Col>
       </Row>
     </Container>

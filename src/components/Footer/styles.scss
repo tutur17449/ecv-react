@@ -1,0 +1,13 @@
+@import "/src/assets/scss/config.scss";
+
+footer {
+  margin-top: auto;
+  .container-fluid {
+    margin-top: 3rem;
+    background-color: $color-grey;
+    padding: 2rem 1rem;
+    .nav-link {
+      color: black;
+    }
+  }
+}
