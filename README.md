@@ -14,41 +14,41 @@
 
 ## Pages
 
-- Profile
-- Edition profile
-- Articles
-- Article
-- Accueil
-- Register
-- Login
-- Edition d'articles
-- Creation d'articles
+- [ ] Profile
+- [ ] Edition profile
+- [ ] Articles
+- [ ] Article
+- [ ] Accueil
+- [ ] Register
+- [ ] Login
+- [ ] Edition d'articles
+- [ ] Creation d'articles
 
 ## Contenu des pages
 
 ### Accueil
 
-- Afficher les trois derniers articles
+- [ ] Afficher les trois derniers articles
 
 ### Profile
 
-- Afficher toutes les informations de l'utilisateur (nom, prénom, âge, photo de profil)
-- Bouton permettant à l'utilisateur de modifier son profil
+- [ ] Afficher toutes les informations de l'utilisateur (nom, prénom, âge, photo de profil)
+- [ ] Bouton permettant à l'utilisateur de modifier son profil
 
 ### Articles
 
-- Pagination
-- Seule la personne ayant cree son article peut le supprimer
+- [ ] Pagination
+- [ ] Seule la personne ayant cree son article peut le supprimer
 
 ### Article
 
-- Afficher les informations (titre, image, description, prix)
-- Pouvoir choisir la quantité
+- [ ] Afficher les informations (titre, image, description, prix)
+- [ ] Pouvoir choisir la quantité
 
 ## Composants requis
 
-- Header (connexion/deconnexion)
-- Footer
+- [x] Header (connexion/deconnexion)
+- [ ] Footer
 
 ## Models
 
@@ -72,8 +72,8 @@
 
 ## Bonus
 
-- Rechercher un article
-- Filtrer par catégorie
+- [ ] Rechercher un article
+- [ ] Filtrer par catégorie
 
 ## Model
 
@@ -85,9 +85,9 @@
 
 ## Pages
 
-- Creation de categories
-- Edition de categories
+- [ ] Creation de categories
+- [ ] Edition de categories
 
 ### Accueil
 
-- Afficher toutes les catégories (seul la personne ayant creer la categorie peut la supprimer)
+- [ ] Afficher toutes les catégories (seul la personne ayant creer la categorie peut la supprimer)
