@@ -1,5 +1,12 @@
 @import "/src/assets/scss/config.scss";
 
+.card-link {
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
 .card {
   transition: all 250ms;
   &:hover {
@@ -12,5 +19,9 @@
     width: auto;
     max-width: 90%;
     margin: auto;
+  }
+  p,
+  h5 {
+    color: initial;
   }
 }
