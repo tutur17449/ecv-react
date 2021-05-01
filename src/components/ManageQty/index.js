@@ -10,7 +10,7 @@ const ManageQty = ({ prix }) => {
   const onChange = (e) => {
     const { value } = e.target;
     setCommand({
-      ...command,
+      qty: value,
       pt: value * prix,
     });
   };
