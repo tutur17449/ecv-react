@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -12,6 +12,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import useAuth from "../../hooks/useAuth";
+import Logo from "../../assets/images/logo.png";
 import "./styles.scss";
 
 const Header = () => {
@@ -24,20 +25,25 @@ const Header = () => {
     <div>
       <Navbar expand="md">
         <Link to="/">
-          <span className="navbar-brand">Accueil</span>
+          <img src={Logo} className="navbar-brand logo" alt="Zapple logo" />
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link to="/articles">
-                <span className="nav-link">Articles</span>
-              </Link>
+              <NavLink to="/" activeClassName="nav-link-current" exact>
+                <span className="nav-link">Accueil</span>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/categories">
+              <NavLink to="/articles" activeClassName="nav-link-current">
+                <span className="nav-link">Articles</span>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/categories" activeClassName="nav-link-current">
                 <span className="nav-link">Categories</span>
-              </Link>
+              </NavLink>
             </NavItem>
           </Nav>
           {user ? (

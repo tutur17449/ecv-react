@@ -1,9 +1,36 @@
 # Rendu React-Redux
 
+Alex LYS - Raphaël HERBLOT - Arthur HAMEL
+
 - Groupe de 3
 - A rendre avant le 15 mai à 00h00/14 mai 23h59
 - Envoyer le repo a : jrmbourel@gmail.com
 - Dans le readme, les noms/prenoms de tous les participants doivent être inscrit
+
+## Commandes
+
+```bash
+# Installation du projet
+npm install
+cd db
+npm install
+
+# Lancement frontend
+npm start
+
+# Lancement backend
+npm run start:db
+```
+
+## Comptes demo
+
+Utilisateur standard
+
+> user@test.fr - test
+
+Utilisateur admin
+
+> admin@test.fr - test
 
 ## Outils à utiliser
 
@@ -48,7 +75,7 @@
 ## Composants requis
 
 - [x] Header (connexion/deconnexion)
-- [ ] Footer
+- [x] Footer
 
 ## Models
 

@@ -25,7 +25,9 @@ const Footer = () => {
             </Row>
             <hr />
             <Row>
-              <Col>Copyright © 2021. Tous droits réservés.</Col>
+              <Col>
+                Copyright © 2021 - Zapple technologies. Tous droits réservés.
+              </Col>
             </Row>
             <Row>
               <Col>Arthur HAMEL - Raphaël HERBLOT - Alex LYS</Col>

@@ -24,6 +24,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
+    "start:db": "cd db && node server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
