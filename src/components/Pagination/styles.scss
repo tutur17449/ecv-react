@@ -1,0 +1,33 @@
+@import "/src/assets/scss/config.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  li {
+    margin: 0 0.25rem;
+    padding: 5px 10px;
+    display: inline-block;
+    min-width: 30px;
+    border-radius: 5px;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    &.active,
+    &:hover {
+      color: white;
+      background-color: $color-dark;
+    }
+  }
+  .page-selection {
+    height: 30px;
+    color: #337ab7;
+  }
+  .pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+}

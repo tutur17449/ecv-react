@@ -12,7 +12,6 @@ const articlesSlice = createSlice({
   initialState,
   reducers: {
     SET_ARTICLES: (state, { payload }) => {
-      console.log(payload);
       state.articlesList = payload;
       state.isInit = true;
     },

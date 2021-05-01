@@ -28,7 +28,7 @@ const Articles = () => {
         {!isInit || isLoading ? (
           <p>Chargement des articles ...</p>
         ) : (
-          <ArticlesList />
+          <ArticlesList limit={6} />
         )}
       </Row>
     </Container>
