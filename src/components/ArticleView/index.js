@@ -3,6 +3,7 @@ import { getArticle } from "../../store/articles/articles.selector";
 import { useSelector } from "react-redux";
 import { Col, Row } from "reactstrap";
 import "./styles.scss";
+import ManageQty from "../ManageQty";
 
 const ArticleView = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const ArticleView = () => {
         </div>
         <hr />
         <p>{article.description}</p>
+        <ManageQty prix={article.prix} />
       </Col>
     </Row>
   );

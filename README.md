@@ -70,7 +70,7 @@ Utilisateur admin
 ### Article
 
 - [x] Afficher les informations (titre, image, description, prix)
-- [ ] Pouvoir choisir la quantité
+- [x] Pouvoir choisir la quantité
 
 ## Composants requis
 
@@ -99,7 +99,7 @@ Utilisateur admin
 
 ## Bonus
 
-- [ ] Rechercher un article
+- [x] Rechercher un article
 - [ ] Filtrer par catégorie
 
 ## Model
