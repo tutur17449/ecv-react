@@ -1,6 +1,14 @@
+@import "/src/assets/scss/config.scss";
+
 #article {
   img {
     max-width: 100%;
     margin: auto;
+  }
+  .article-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }

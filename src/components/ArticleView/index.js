@@ -18,7 +18,10 @@ const ArticleView = () => {
         <img src={article.image} alt={article.nom} />
       </Col>
       <Col xs={12} lg={6} className="m-auto">
-        <h1>{article.nom}</h1>
+        <div className="article-header">
+          <h1>{article.nom}</h1>
+          <h2>{article.prix} €</h2>
+        </div>
         <hr />
         <p>{article.description}</p>
       </Col>

@@ -5,6 +5,7 @@ import { getLoading } from "../../store/api/api.selectors";
 import { fetchInitialArticles } from "../../store/articles/articles.slice";
 import { Container, Row } from "reactstrap";
 import ArticleView from "../../components/ArticleView";
+import Spin from "../../components/Spin";
 
 const Article = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Article = () => {
     <Container>
       {!isInit || isLoading ? (
         <Row>
-          <p>Chargement en cours ...</p>
+          <Spin />
         </Row>
       ) : (
         <ArticleView />

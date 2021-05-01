@@ -55,7 +55,7 @@ Utilisateur admin
 
 ### Accueil
 
-- [ ] Afficher les trois derniers articles
+- [x] Afficher les trois derniers articles
 
 ### Profile
 
@@ -64,12 +64,12 @@ Utilisateur admin
 
 ### Articles
 
-- [ ] Pagination
+- [x] Pagination
 - [ ] Seule la personne ayant cree son article peut le supprimer
 
 ### Article
 
-- [ ] Afficher les informations (titre, image, description, prix)
+- [x] Afficher les informations (titre, image, description, prix)
 - [ ] Pouvoir choisir la quantité
 
 ## Composants requis

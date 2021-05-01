@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "reactstrap";
 import ArticlesPreview from "../../components/ArticlesPreview";
+import Spin from "../../components/Spin";
 import { getLoading } from "../../store/api/api.selectors";
 import { getIsInit } from "../../store/articles/articles.selector";
 import { fetchInitialArticles } from "../../store/articles/articles.slice";
@@ -25,13 +26,7 @@ const Home = () => {
           <h2>Derniers articles</h2>
         </Col>
       </Row>
-      <Row>
-        {!isInit || isLoading ? (
-          <p>Chargement des articles ...</p>
-        ) : (
-          <ArticlesPreview />
-        )}
-      </Row>
+      <Row>{!isInit || isLoading ? <Spin /> : <ArticlesPreview />}</Row>
     </Container>
   );
 };
