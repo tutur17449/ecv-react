@@ -1,38 +1,84 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Col } from "reactstrap";
-import { getArticles } from "../../store/articles/articles.selector";
+import { getArticlesWithSearch } from "../../store/articles/articles.selector";
 import CardArticle from "../CardArticle";
 import Pagination from "../Pagination";
 
 const ArticlesList = ({ limit }) => {
-  const articles = useSelector(getArticles);
+  const [searchValue, setSearchValue] = useState("");
+  const articles = useSelector(getArticlesWithSearch(searchValue));
   const [pagination, setPagination] = useState({
     pageCount: Math.ceil(articles.length / limit),
+    current: 0,
     offset: 0,
   });
+
+  const onSearch = (e) => {
+    const { value } = e.target;
+    setSearchValue(value);
+  };
 
   const onChange = (data) => {
     setPagination({
       ...pagination,
+      current: data.selected,
       offset: data.selected * limit,
     });
   };
 
-  if (articles.length === 0) {
-    return <p>Aucun article</p>;
-  }
+  useEffect(() => {
+    setPagination({
+      current: 0,
+      offset: 0,
+      pageCount: Math.ceil(articles.length / limit),
+    });
+  }, [articles.length, limit]);
 
   return (
     <>
-      {articles.slice(pagination.offset, pagination.offset + limit).map((i) => (
-        <Col key={i.id} xs={12} sm={6} md={4} className="mt-2 mb-2">
-          <CardArticle data={i} />
+      <Col xs={12}>
+        <div className="w-100 d-flex flex-row justify-content-between align-center mb-3">
+          <input
+            name="search"
+            value={searchValue}
+            onChange={onSearch}
+            placeholder="ex: imac"
+            style={{
+              borderRadius: "5px",
+              padding: "6px 4px",
+              minWidth: "30%",
+            }}
+          />
+          {searchValue !== "" && (
+            <p className="m-0">
+              Résultat de la recherche pour : "{searchValue}"
+            </p>
+          )}
+        </div>
+      </Col>
+      {articles.length === 0 ? (
+        <Col xs={12} className="mt-5">
+          <p>Aucun article</p>
         </Col>
-      ))}
-      <div className="d-flex justify-content-center w-100 mt-5">
-        <Pagination pageCount={pagination.pageCount} onPageChange={onChange} />
-      </div>
+      ) : (
+        <>
+          {articles
+            .slice(pagination.offset, pagination.offset + limit)
+            .map((i) => (
+              <Col key={i.id} xs={12} sm={6} md={4} className="mt-2 mb-2">
+                <CardArticle data={i} />
+              </Col>
+            ))}
+          <div className="d-flex justify-content-center w-100 mt-5">
+            <Pagination
+              forcePage={pagination.current}
+              pageCount={pagination.pageCount}
+              onPageChange={onChange}
+            />
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -2,6 +2,14 @@ export const getArticles = (state) => {
   return state.articles.articlesList;
 };
 
+export const getArticlesWithSearch = (searchValue) => (state) => {
+  return state.articles.articlesList.filter(
+    (i) =>
+      i.nom.toLowerCase().includes(searchValue.toLowerCase()) ||
+      i.description.toLowerCase().includes(searchValue.toLowerCase())
+  );
+};
+
 export const getArticle = (id) => (state) => {
   return state.articles.articlesList.find(
     (article) => article.id === parseInt(id)
