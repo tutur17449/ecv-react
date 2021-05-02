@@ -43,13 +43,13 @@ Utilisateur admin
 
 - [ ] Profile
 - [ ] Edition profile
-- [ ] Articles
-- [ ] Article
+- [x] Articles
+- [x] Article
 - [ ] Accueil
 - [ ] Register
 - [ ] Login
-- [ ] Edition d'articles
-- [ ] Creation d'articles
+- [x] Edition d'articles
+- [x] Creation d'articles
 
 ## Contenu des pages
 
@@ -65,7 +65,7 @@ Utilisateur admin
 ### Articles
 
 - [x] Pagination
-- [ ] Seule la personne ayant cree son article peut le supprimer
+- [x] Seule la personne ayant cree son article peut le supprimer
 
 ### Article
 
