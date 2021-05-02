@@ -15,10 +15,13 @@ const articlesSlice = createSlice({
       state.articlesList = payload;
       state.isInit = true;
     },
+    SET_NEW_ARTICLE: (state, { payload }) => {
+      state.articlesList = [payload, ...state.articlesList];
+    },
   },
 });
 
-export const { SET_ARTICLES } = articlesSlice.actions;
+export const { SET_ARTICLES, SET_NEW_ARTICLE } = articlesSlice.actions;
 
 export default articlesSlice.reducer;
 
@@ -32,5 +35,17 @@ export const fetchInitialArticles = () => async (dispatch) => {
     console.log(err);
   } finally {
     dispatch(SET_COMPLETE("getInitialArticles"));
+  }
+};
+
+export const fetchCreateArticle = (formData) => async (dispatch) => {
+  dispatch(SET_LOADING("articleActions"));
+  try {
+    const { data } = await httpClient.post("/api/articles", formData);
+    dispatch(SET_NEW_ARTICLE(data));
+  } catch (err) {
+    console.log(err);
+  } finally {
+    dispatch(SET_COMPLETE("articleActions"));
   }
 };

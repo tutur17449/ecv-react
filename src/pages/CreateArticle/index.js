@@ -1,5 +1,8 @@
+import ArticleForm from "../../components/ArticleForm";
+import withAuth from "../../hoc/withAuth";
+
 const CreateArticle = () => {
-  return <h1>CreateArticle</h1>;
+  return <ArticleForm />;
 };
 
-export default CreateArticle;
+export default withAuth(CreateArticle);

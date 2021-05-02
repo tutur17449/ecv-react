@@ -23,7 +23,7 @@ function App() {
       <Provider store={store}>
         <Router>
           <Header />
-          <main className="min-vh-75">
+          <main>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/articles/:id/edit" component={EditArticle} />
