@@ -6,25 +6,25 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  Button,
 } from "reactstrap";
+import CardArticleActions from "../CardArticleActions";
 import "./styles.scss";
 
-const CardArticle = ({ data }) => {
+const CardArticle = ({ data, isAuthor }) => {
   return (
-    <Link to={`/articles/${data.id}`} className="card-link">
-      <Card>
+    <Card>
+      <Link to={`/articles/${data.id}`} className="card-link">
         <CardImg top width="100%" src={data.image} alt={data.nom} />
-        <CardBody>
-          <CardTitle tag="h5">{data.nom}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">
-            {data.prix} €
-          </CardSubtitle>
-          <CardText>{data.description}</CardText>
-          <Button>Button</Button>
-        </CardBody>
-      </Card>
-    </Link>
+      </Link>
+      <CardBody>
+        <CardTitle tag="h5">{data.nom}</CardTitle>
+        <CardSubtitle tag="h6" className="mb-2 text-muted">
+          {data.prix} €
+        </CardSubtitle>
+        <CardText>{data.description}</CardText>
+      </CardBody>
+      {isAuthor && <CardArticleActions current={data.id} />}
+    </Card>
   );
 };
 

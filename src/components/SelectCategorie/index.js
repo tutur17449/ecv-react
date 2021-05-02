@@ -20,8 +20,6 @@ const SelectCategorie = ({ value, error, onChange }) => {
     }
   }, []);
 
-  console.log(categories);
-
   return (
     <FormGroup>
       <Label for="exampleCategorie">Catégorie</Label>

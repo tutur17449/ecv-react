@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import useAuth from "../../hooks/useAuth";
 import { Col } from "reactstrap";
 import { getArticlesWithSearch } from "../../store/articles/articles.selector";
 import CardArticle from "../CardArticle";
 import Pagination from "../Pagination";
+import { useHistory } from "react-router";
 
 const ArticlesList = ({ limit }) => {
+  const { user } = useAuth();
+  const history = useHistory();
   const [searchValue, setSearchValue] = useState("");
   const articles = useSelector(getArticlesWithSearch(searchValue));
   const [pagination, setPagination] = useState({
@@ -67,7 +71,10 @@ const ArticlesList = ({ limit }) => {
             .slice(pagination.offset, pagination.offset + limit)
             .map((i) => (
               <Col key={i.id} xs={12} sm={6} md={4} className="mt-2 mb-2">
-                <CardArticle data={i} />
+                <CardArticle
+                  data={i}
+                  isAuthor={user && user.id === i.user_id}
+                />
               </Col>
             ))}
           <div className="d-flex justify-content-center w-100 mt-5">

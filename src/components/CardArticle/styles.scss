@@ -2,6 +2,9 @@
 
 .card-link {
   text-decoration: none !important;
+  width: auto;
+  max-width: 90%;
+  margin: auto;
   &:hover {
     text-decoration: none !important;
   }
@@ -10,10 +13,9 @@
 .card {
   transition: all 250ms;
   &:hover {
-    cursor: pointer;
     border-color: $color-grey-dark;
   }
-  .card-img-top {
+  a .card-img-top {
     padding: 20px 0;
     max-height: 250px;
     width: auto;

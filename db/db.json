@@ -24,11 +24,11 @@
   "articles": [
     {
       "id": 1,
-      "nom": "Nouvel iMac 24p",
+      "nom": "Nouvel iMac 24",
       "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/imac-24-purple-selection-hero-202104?wid=892&hei=820&&.v=1617492406000",
       "description": "256 Go de stockage¹, 8 Go de mémoire unifiée, Écran Retina 4.5K de 24 pouces², Deux ports Thunderbolt/USB 4",
       "prix": 1449,
-      "user_id": 1,
+      "user_id": 2,
       "categorie_id": 1,
       "created_at": "2021-04-27T07:24:09.612Z"
     },

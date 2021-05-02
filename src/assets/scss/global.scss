@@ -21,3 +21,15 @@
   text-decoration: none;
   color: #fff;
 }
+
+.icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 4px;
+  transition: all 250ms;
+  &:hover {
+    cursor: pointer;
+    background-color: $icon-hover;
+  }
+}

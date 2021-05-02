@@ -18,10 +18,20 @@ const articlesSlice = createSlice({
     SET_NEW_ARTICLE: (state, { payload }) => {
       state.articlesList = [payload, ...state.articlesList];
     },
+    SET_UPDATE_ARTICLE: (state, { payload }) => {
+      const index = state.articlesList.findIndex((i) => i.id === payload.id);
+      if (index !== -1) {
+        state.articlesList[index] = payload;
+      }
+    },
   },
 });
 
-export const { SET_ARTICLES, SET_NEW_ARTICLE } = articlesSlice.actions;
+export const {
+  SET_ARTICLES,
+  SET_NEW_ARTICLE,
+  SET_UPDATE_ARTICLE,
+} = articlesSlice.actions;
 
 export default articlesSlice.reducer;
 
@@ -43,6 +53,21 @@ export const fetchCreateArticle = (formData) => async (dispatch) => {
   try {
     const { data } = await httpClient.post("/api/articles", formData);
     dispatch(SET_NEW_ARTICLE(data));
+  } catch (err) {
+    console.log(err);
+  } finally {
+    dispatch(SET_COMPLETE("articleActions"));
+  }
+};
+
+export const fetchUpdateArticle = (formData) => async (dispatch) => {
+  dispatch(SET_LOADING("articleActions"));
+  try {
+    const { data } = await httpClient.put(
+      `/api/articles/${formData.id}`,
+      formData
+    );
+    dispatch(SET_UPDATE_ARTICLE(data));
   } catch (err) {
     console.log(err);
   } finally {
