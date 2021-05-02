@@ -1,15 +1,5 @@
 import { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormFeedback,
-} from "reactstrap";
+import { Container, Row, Col, Button, Form } from "reactstrap";
 import useAuth from "../../hooks/useAuth";
 import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
@@ -23,6 +13,7 @@ import {
 import { getLoading } from "../../store/api/api.selectors";
 import SelectCategorie from "../SelectCategorie";
 import { getArticle } from "../../store/articles/articles.selector";
+import FormInput from "../FormInput";
 
 const ArticleForm = () => {
   const { id } = useParams();
@@ -101,66 +92,46 @@ const ArticleForm = () => {
           )}
           <hr />
           <Form onSubmit={onSubmit} className="mt-5">
-            <FormGroup>
-              <Label for="exampleNom">Nom</Label>
-              <Input
-                type="text"
-                name="nom"
-                id="exampleNom"
-                placeholder="iMac"
-                value={formData.nom}
-                onChange={onChange}
-                invalid={formError.nom !== "" && true}
-              />
-              {formError.nom !== "" && (
-                <FormFeedback>{formError.nom}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="exampleImage">Image</Label>
-              <Input
-                type="text"
-                name="image"
-                id="exampleImage"
-                placeholder="https://path-to-image.fr"
-                value={formData.image}
-                onChange={onChange}
-                invalid={formError.image !== "" && true}
-              />
-              {formError.image !== "" && (
-                <FormFeedback>{formError.image}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="exampleDescription">Description</Label>
-              <Input
-                type="text"
-                name="description"
-                id="exampleDescription"
-                placeholder="Caractéristiques du produit"
-                value={formData.description}
-                onChange={onChange}
-                invalid={formError.description !== "" && true}
-              />
-              {formError.description !== "" && (
-                <FormFeedback>{formError.description}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="examplePrix">Prix</Label>
-              <Input
-                type="number"
-                name="prix"
-                id="examplePrix"
-                placeholder="399"
-                value={formData.prix}
-                onChange={onChange}
-                invalid={formError.prix !== "" && true}
-              />
-              {formError.prix !== "" && (
-                <FormFeedback>{formError.prix}</FormFeedback>
-              )}
-            </FormGroup>
+            <FormInput
+              label="Nom"
+              type="text"
+              name="nom"
+              id="nom"
+              placeholder="iMac"
+              value={formData.nom}
+              onChange={onChange}
+              error={formError.nom}
+            />
+            <FormInput
+              label="Image"
+              type="text"
+              name="image"
+              id="image"
+              placeholder="https://path-to-image.fr"
+              value={formData.image}
+              onChange={onChange}
+              error={formError.image}
+            />
+            <FormInput
+              label="Description"
+              type="text"
+              name="description"
+              id="description"
+              placeholder="Caractéristiques du produit"
+              value={formData.description}
+              onChange={onChange}
+              error={formError.description}
+            />
+            <FormInput
+              label="Prix"
+              type="number"
+              name="prix"
+              id="prix"
+              placeholder="399"
+              value={formData.prix}
+              onChange={onChange}
+              error={formError.prix}
+            />
             <SelectCategorie
               value={formData.categorie_id}
               onChange={onChange}

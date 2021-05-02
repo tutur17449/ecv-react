@@ -1,22 +1,12 @@
 import { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormFeedback,
-  Alert,
-} from "reactstrap";
+import { Container, Row, Col, Button, Form, Alert } from "reactstrap";
 import useAuth from "../../hooks/useAuth";
 import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
 import validateFields from "./formRegister.validator";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import FormInput from "../FormInput";
 
 const RegisterForm = () => {
   const { register } = useAuth();
@@ -99,81 +89,56 @@ const RegisterForm = () => {
           <h1>Veuillez vous inscrire</h1>
           <hr />
           <Form onSubmit={onSubmit} className="mt-5">
-            <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="john.doe@example.com"
-                value={formData.email}
-                onChange={onChange}
-                invalid={formError.email !== "" && true}
-              />
-              {formError.email !== "" && (
-                <FormFeedback>{formError.email}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="examplePassword">Mot de passe</Label>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="******"
-                value={formData.password}
-                onChange={onChange}
-                invalid={formError.password !== "" && true}
-              />
-              {formError.password !== "" && (
-                <FormFeedback>{formError.password}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="prenom">Prénom</Label>
-              <Input
-                type="text"
-                name="prenom"
-                id="prenom"
-                placeholder="John"
-                value={formData.prenom}
-                onChange={onChange}
-                invalid={formError.prenom !== "" && true}
-              />
-              {formError.prenom !== "" && (
-                <FormFeedback>{formError.prenom}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="nom">Nom</Label>
-              <Input
-                type="text"
-                name="nom"
-                id="nom"
-                placeholder="Doe"
-                value={formData.nom}
-                onChange={onChange}
-                invalid={formError.nom !== "" && true}
-              />
-              {formError.nom !== "" && (
-                <FormFeedback>{formError.nom}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="image">Image</Label>
-              <Input
-                type="text"
-                name="image"
-                id="image"
-                placeholder="https://ma-photo-de-profil.fr"
-                value={formData.image}
-                onChange={onChange}
-                invalid={formError.image !== "" && true}
-              />
-              {formError.image !== "" && (
-                <FormFeedback>{formError.image}</FormFeedback>
-              )}
-            </FormGroup>
+            <FormInput
+              label="Email"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="john.doe@example.com"
+              value={formData.email}
+              onChange={onChange}
+              error={formError.email}
+            />
+            <FormInput
+              label="Mot de passe"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="******"
+              value={formData.password}
+              onChange={onChange}
+              error={formError.password}
+            />
+            <FormInput
+              label="Prénom"
+              type="text"
+              name="prenom"
+              id="prenom"
+              placeholder="John"
+              value={formData.prenom}
+              onChange={onChange}
+              error={formError.prenom}
+            />
+            <FormInput
+              label="Nom"
+              type="text"
+              name="nom"
+              id="nom"
+              placeholder="Doe"
+              value={formData.nom}
+              onChange={onChange}
+              error={formError.nom}
+            />
+            <FormInput
+              label="Image"
+              type="text"
+              name="image"
+              id="image"
+              placeholder="https://ma-photo-de-profil.fr"
+              value={formData.image}
+              onChange={onChange}
+              error={formError.image}
+            />
             <Button type="submit" disabled={isLoading} className="w-100">
               Inscription
             </Button>

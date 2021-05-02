@@ -1,22 +1,12 @@
 import { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormFeedback,
-  Alert,
-} from "reactstrap";
+import { Container, Row, Col, Button, Form, Alert } from "reactstrap";
 import useAuth from "../../hooks/useAuth";
 import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
 import validateFields from "./formLogin.validator";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import FormInput from "../FormInput";
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -92,36 +82,26 @@ const LoginForm = () => {
           <h1>Veuillez vous connecter</h1>
           <hr />
           <Form onSubmit={onSubmit} className="mt-5">
-            <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="john.doe@example.com"
-                value={formData.email}
-                onChange={onChange}
-                invalid={formError.email !== "" && true}
-              />
-              {formError.email !== "" && (
-                <FormFeedback>{formError.email}</FormFeedback>
-              )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="examplePassword">Mot de passe</Label>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="******"
-                value={formData.password}
-                onChange={onChange}
-                invalid={formError.password !== "" && true}
-              />
-              {formError.password !== "" && (
-                <FormFeedback>{formError.password}</FormFeedback>
-              )}
-            </FormGroup>
+            <FormInput
+              label="Email"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="john.doe@example.com"
+              value={formData.email}
+              onChange={onChange}
+              error={formError.email}
+            />
+            <FormInput
+              label="Mot de passe"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="******"
+              value={formData.password}
+              onChange={onChange}
+              error={formError.password}
+            />
             <Button type="submit" disabled={isLoading} className="w-100">
               Connexion
             </Button>
