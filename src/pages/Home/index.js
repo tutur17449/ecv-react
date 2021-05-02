@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "reactstrap";
 import ArticlesPreview from "../../components/ArticlesPreview";
+import CategoriesList from "../../components/CategoriesList";
 import Spin from "../../components/Spin";
 import { getLoading } from "../../store/api/api.selectors";
 import { getIsInit } from "../../store/articles/articles.selector";
@@ -10,11 +11,11 @@ import "./styles.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const isArticleInit = useSelector(getIsInit);
-  const isArticleLoading = useSelector(getLoading("getInitialArticles"));
+  const isInit = useSelector(getIsInit);
+  const isLoading = useSelector(getLoading("getInitialArticles"));
 
   useEffect(() => {
-    if (!isArticleInit) {
+    if (!isInit) {
       dispatch(fetchInitialArticles());
     }
   }, []);
@@ -27,11 +28,12 @@ const Home = () => {
         </div>
       </Container>
       <Container>
+        <CategoriesList />
         <Row>
           <Col xs={12} className="mt-5 mb-5">
             <h2>Derniers articles</h2>
           </Col>
-          {!isArticleInit || isArticleLoading ? <Spin /> : <ArticlesPreview />}
+          {!isInit || isLoading ? <Spin /> : <ArticlesPreview />}
         </Row>
       </Container>
     </>
