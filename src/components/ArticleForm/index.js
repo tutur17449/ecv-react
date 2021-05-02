@@ -9,7 +9,6 @@ import {
   Label,
   Input,
   FormFeedback,
-  Alert,
 } from "reactstrap";
 import useAuth from "../../hooks/useAuth";
 import formValidator from "../../helpers/formValidator";
@@ -26,10 +25,6 @@ const ArticleForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLoading = useSelector(getLoading("articleActions"));
-  const [globalError, setGlobalError] = useState({
-    visible: false,
-    message: "",
-  });
   const [formData, setFormData] = useState({
     nom: "",
     image: "",
@@ -56,10 +51,6 @@ const ArticleForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setGlobalError({
-      visible: false,
-      message: "",
-    });
     const validation = formValidator(
       formError,
       setFormError,
@@ -68,23 +59,16 @@ const ArticleForm = () => {
     );
 
     if (!validation) {
-      try {
-        dispatch(
-          fetchCreateArticle({
-            ...formData,
-            prix: parseInt(formData.prix),
-            categorie_id: parseInt(formData.categorie_id),
-            user_id: user.id,
-            created_at: new Date(),
-          })
-        );
-        history.goBack(-1);
-      } catch (err) {
-        setGlobalError({
-          visible: true,
-          message: err?.message ?? "Une erreur est survenue",
-        });
-      }
+      dispatch(
+        fetchCreateArticle({
+          ...formData,
+          prix: parseInt(formData.prix),
+          categorie_id: parseInt(formData.categorie_id),
+          user_id: user.id,
+          created_at: new Date(),
+        })
+      );
+      history.goBack(-1);
     }
   };
 
@@ -92,20 +76,6 @@ const ArticleForm = () => {
     <Container>
       <Row>
         <Col lg="6" className="m-auto pt-5">
-          {globalError.visible && (
-            <Alert
-              color="danger"
-              isOpen={globalError.visible}
-              toggle={() =>
-                setGlobalError({
-                  message: "",
-                  visible: false,
-                })
-              }
-            >
-              {globalError.message}
-            </Alert>
-          )}
           <h1>Ajouter un nouvel article</h1>
           <hr />
           <Form onSubmit={onSubmit} className="mt-5">
