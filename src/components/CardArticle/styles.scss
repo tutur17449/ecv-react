@@ -17,7 +17,8 @@
   }
   a .card-img-top {
     padding: 20px 0;
-    max-height: 250px;
+    min-height: 250px;
+    height: 250px;
     width: auto;
     max-width: 90%;
     margin: auto;

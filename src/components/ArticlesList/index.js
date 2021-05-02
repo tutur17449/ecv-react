@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../../hooks/useAuth";
 import { Col } from "reactstrap";
 import { getArticlesWithSearch } from "../../store/articles/articles.selector";
 import CardArticle from "../CardArticle";
 import Pagination from "../Pagination";
-import { useHistory } from "react-router";
+import { fetchDeleteArticle } from "../../store/articles/articles.slice";
 
 const ArticlesList = ({ limit }) => {
   const { user } = useAuth();
-  const history = useHistory();
+  const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
   const articles = useSelector(getArticlesWithSearch(searchValue));
   const [pagination, setPagination] = useState({
@@ -29,6 +29,10 @@ const ArticlesList = ({ limit }) => {
       current: data.selected,
       offset: data.selected * limit,
     });
+  };
+
+  const onDelete = (id) => {
+    dispatch(fetchDeleteArticle(id));
   };
 
   useEffect(() => {
@@ -74,6 +78,7 @@ const ArticlesList = ({ limit }) => {
                 <CardArticle
                   data={i}
                   isAuthor={user && user.id === i.user_id}
+                  onDelete={onDelete}
                 />
               </Col>
             ))}

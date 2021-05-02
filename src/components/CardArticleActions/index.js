@@ -3,10 +3,10 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { BsSlashSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const CardArticleActions = ({ current }) => {
+const CardArticleActions = ({ current, onDelete, styles = null }) => {
   return (
-    <CardFooter>
-      <BsFillTrashFill className="icon" />
+    <CardFooter className={styles}>
+      <BsFillTrashFill className="icon" onClick={() => onDelete(current)} />
       <Link to={`/articles/${current}/edit`}>
         <BsSlashSquareFill className="icon" />
       </Link>

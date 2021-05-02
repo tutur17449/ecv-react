@@ -16,13 +16,18 @@ const articlesSlice = createSlice({
       state.isInit = true;
     },
     SET_NEW_ARTICLE: (state, { payload }) => {
-      state.articlesList = [payload, ...state.articlesList];
+      state.articlesList = [...state.articlesList, payload];
     },
     SET_UPDATE_ARTICLE: (state, { payload }) => {
       const index = state.articlesList.findIndex((i) => i.id === payload.id);
       if (index !== -1) {
         state.articlesList[index] = payload;
       }
+    },
+    SET_DELETE_ARTICLE: (state, { payload }) => {
+      state.articlesList = [
+        ...state.articlesList.filter((i) => i.id !== payload.id),
+      ];
     },
   },
 });
@@ -31,6 +36,7 @@ export const {
   SET_ARTICLES,
   SET_NEW_ARTICLE,
   SET_UPDATE_ARTICLE,
+  SET_DELETE_ARTICLE,
 } = articlesSlice.actions;
 
 export default articlesSlice.reducer;
@@ -68,6 +74,18 @@ export const fetchUpdateArticle = (formData) => async (dispatch) => {
       formData
     );
     dispatch(SET_UPDATE_ARTICLE(data));
+  } catch (err) {
+    console.log(err);
+  } finally {
+    dispatch(SET_COMPLETE("articleActions"));
+  }
+};
+
+export const fetchDeleteArticle = (id) => async (dispatch) => {
+  dispatch(SET_LOADING("articleActions"));
+  try {
+    await httpClient.delete(`/api/articles/${id}`);
+    dispatch(SET_DELETE_ARTICLE({ id }));
   } catch (err) {
     console.log(err);
   } finally {

@@ -10,7 +10,7 @@ import {
 import CardArticleActions from "../CardArticleActions";
 import "./styles.scss";
 
-const CardArticle = ({ data, isAuthor }) => {
+const CardArticle = ({ data, isAuthor, onDelete }) => {
   return (
     <Card>
       <Link to={`/articles/${data.id}`} className="card-link">
@@ -23,7 +23,7 @@ const CardArticle = ({ data, isAuthor }) => {
         </CardSubtitle>
         <CardText>{data.description}</CardText>
       </CardBody>
-      {isAuthor && <CardArticleActions current={data.id} />}
+      {isAuthor && <CardArticleActions current={data.id} onDelete={onDelete} />}
     </Card>
   );
 };
