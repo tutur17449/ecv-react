@@ -2,7 +2,18 @@ export const getArticles = (state) => {
   return state.articles.articlesList;
 };
 
-export const getArticlesWithSearch = (searchValue) => (state) => {
+export const getArticlesWithSearch = (searchValue, categorieId = null) => (
+  state
+) => {
+  if (categorieId) {
+    return state.articles.articlesList.filter(
+      (i) =>
+      i.categorie_id === parseInt(categorieId) &&
+        (i.nom.toLowerCase().includes(searchValue.toLowerCase()) ||
+        i.description.toLowerCase().includes(searchValue.toLowerCase())) 
+    );
+  }
+
   return state.articles.articlesList.filter(
     (i) =>
       i.nom.toLowerCase().includes(searchValue.toLowerCase()) ||

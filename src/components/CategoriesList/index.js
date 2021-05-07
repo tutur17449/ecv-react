@@ -25,9 +25,7 @@ const CategoriesList = () => {
   if (!isInit || isLoading) {
     return (
       <Row>
-        <Col xs={12} className="mt-5 mb-5">
-          <h2>Catégories</h2>
-        </Col>
+        <Col xs={12}></Col>
         <Spin />
       </Row>
     );
@@ -36,8 +34,7 @@ const CategoriesList = () => {
   if (categories.length === 0) {
     return (
       <Row>
-        <Col xs={12} className="mt-5 mb-5">
-          <h2>Catégories</h2>
+        <Col xs={12}>
           <p>Aucune donnée</p>
         </Col>
       </Row>
@@ -46,11 +43,8 @@ const CategoriesList = () => {
 
   return (
     <Row>
-      <Col xs={12} className="mt-5 mb-5">
-        <h2>Catégories</h2>
-      </Col>
       {categories.map((i) => (
-        <CardCategorie data={i} />
+        <CardCategorie key={i.id} data={i} />
       ))}
     </Row>
   );

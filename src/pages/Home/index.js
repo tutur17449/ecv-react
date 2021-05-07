@@ -28,6 +28,11 @@ const Home = () => {
         </div>
       </Container>
       <Container>
+        <Row className="mt-5 mb-5">
+          <Col>
+            <h2>Toutes les catégories</h2>
+          </Col>
+        </Row>
         <CategoriesList />
         <Row>
           <Col xs={12} className="mt-5 mb-5">

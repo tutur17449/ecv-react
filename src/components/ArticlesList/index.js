@@ -6,12 +6,14 @@ import { getArticlesWithSearch } from "../../store/articles/articles.selector";
 import CardArticle from "../CardArticle";
 import Pagination from "../Pagination";
 import { fetchDeleteArticle } from "../../store/articles/articles.slice";
+import { useParams } from "react-router";
 
 const ArticlesList = ({ limit }) => {
   const { user } = useAuth();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
-  const articles = useSelector(getArticlesWithSearch(searchValue));
+  const articles = useSelector(getArticlesWithSearch(searchValue, id));
   const [pagination, setPagination] = useState({
     pageCount: Math.ceil(articles.length / limit),
     current: 0,

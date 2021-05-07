@@ -32,6 +32,7 @@ function App() {
               <Route path="/articles" component={Articles} />
               <Route path="/categories/:id/edit" component={EditCategorie} />
               <Route path="/categories/create" component={CreateCategorie} />
+              <Route path="/categories/:id" component={Categories} />
               <Route path="/categories" component={Categories} />
               <Route path="/profile" component={UserProfile} />
               <Route path="/profile/edit" component={EditProfile} />
