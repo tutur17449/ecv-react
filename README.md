@@ -41,8 +41,8 @@ Utilisateur admin
 
 ## Pages
 
-- [ ] Profile
-- [ ] Edition profile
+- [x] Profile
+- [x] Edition profile
 - [x] Articles
 - [x] Article
 - [ ] Accueil
