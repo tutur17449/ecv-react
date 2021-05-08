@@ -49,7 +49,7 @@ const Header = () => {
           {user ? (
             <UncontrolledDropdown>
               <DropdownToggle nav caret>
-                {user.nom}
+                {user.prenom} {user.nom} 
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>

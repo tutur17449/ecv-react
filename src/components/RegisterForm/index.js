@@ -5,10 +5,15 @@ import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
 import validateFields from "./formRegister.validator";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import FormInput from "../FormInput";
+import {
+  fetchUpdateUser,
+} from "../../store/users/users.slice";
 
-const RegisterForm = () => {
+const RegisterForm = ({ user, setUser, setIsUpdating }) => {
+  const dispatch = useDispatch();
   const { register } = useAuth();
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
@@ -16,13 +21,21 @@ const RegisterForm = () => {
     visible: false,
     message: "",
   });
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    prenom: "",
-    nom: "",
-    image: "",
-  });
+
+  const [formData, setFormData] = useState(
+    user
+      ? {
+          ...user,
+        }
+      : {
+          email: "",
+          password: "",
+          prenom: "",
+          nom: "",
+          image: "",
+        }
+  );
+
   const [formError, setFormError] = useState({
     email: "",
     password: "",
@@ -55,15 +68,27 @@ const RegisterForm = () => {
 
     if (!validation) {
       setIsLoading(true);
-      try {
-        await register(formData);
-        history.push("/login");
-      } catch (err) {
-        setGlobalError({
-          visible: true,
-          message: err?.message ?? "Une erreur est survenue",
-        });
-        setIsLoading(false);
+      if(user) {
+        dispatch(
+          fetchUpdateUser({
+            ...formData,
+          })
+        );
+        setUser(formData);
+        setIsUpdating(false);
+        history.push("/profile");
+        console.log(formData);
+      } else {
+        try {
+          await register(formData);
+          history.push("/login");
+        } catch (err) {
+          setGlobalError({
+            visible: true,
+            message: err?.message ?? "Une erreur est survenue",
+          });
+          setIsLoading(false);
+        }
       }
     }
   };
@@ -86,7 +111,13 @@ const RegisterForm = () => {
               {globalError.message}
             </Alert>
           )}
-          <h1>Veuillez vous inscrire</h1>
+          
+          {user ? (
+            <h1>Modifier votre profil</h1>
+          ) : (
+            <h1>Veuillez vous inscrire</h1>
+          )}
+
           <hr />
           <Form onSubmit={onSubmit} className="mt-5">
             <FormInput
@@ -99,16 +130,21 @@ const RegisterForm = () => {
               onChange={onChange}
               error={formError.email}
             />
-            <FormInput
-              label="Mot de passe"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="******"
-              value={formData.password}
-              onChange={onChange}
-              error={formError.password}
-            />
+            
+            {user 
+            ? ""
+            : <FormInput
+                label="Mot de passe"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="******"
+                value={formData.password}
+                onChange={onChange}
+                error={formError.password}
+              />
+            }
+            
             <FormInput
               label="Prénom"
               type="text"
@@ -140,13 +176,17 @@ const RegisterForm = () => {
               error={formError.image}
             />
             <Button type="submit" disabled={isLoading} className="w-100">
-              Inscription
+              {user ? "Modifier" : "Inscription"}
             </Button>
           </Form>
-          <div>
-            <span>Déjà inscrit ? </span>
-            <Link to="/login">connectez-vous</Link>
-          </div>
+          {user ? (
+            ''
+          ) : (
+            <div>
+              <span>Déjà inscrit ? </span>
+              <Link to="/login">connectez-vous</Link>
+            </div>
+          )}
         </Col>
       </Row>
     </Container>

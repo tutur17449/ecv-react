@@ -10,7 +10,6 @@ import EditCategorie from "./pages/EditCategorie";
 import CreateCategorie from "./pages/CreateCategorie";
 import Categories from "./pages/Categories";
 import UserProfile from "./pages/UserProfile";
-import EditProfile from "./pages/EditProfile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import store from "./store";
@@ -34,7 +33,6 @@ function App() {
               <Route path="/categories/create" component={CreateCategorie} />
               <Route path="/categories" component={Categories} />
               <Route path="/profile" component={UserProfile} />
-              <Route path="/profile/edit" component={EditProfile} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
             </Switch>

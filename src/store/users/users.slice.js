@@ -30,7 +30,7 @@ export const fetchUpdateUser = (formData) => async (dispatch) => {
   dispatch(SET_LOADING("userActions"));
   try {
     const { data } = await httpClient.put(
-      `/api/profile/${formData.id}`,
+      `/api/users/${formData.id}`,
       formData
     );
     dispatch(SET_UPDATE_USER(data));
