@@ -1,0 +1,32 @@
+@import "/src/assets/scss/config.scss";
+
+.profil-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .profil-informations {
+    > div {
+      margin-bottom: 20px;
+
+      > div {
+        &:first-child {
+          font-size: 20px;
+        }
+
+        &:last-child {
+          color: #212529ad;
+        }
+      }
+    }
+  }
+
+  .profil-picture {
+    img {
+      width: 175px;
+      height: 175px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+}

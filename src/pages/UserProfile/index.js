@@ -1,7 +1,11 @@
 import withAuth from "../../hoc/withAuth";
+import ProfileView from "../../components/ProfileView";
 
 const UserProfile = () => {
-  return <h1>UserProfile</h1>;
+
+  return (
+      <ProfileView />
+  );
 };
 
 export default withAuth(UserProfile);
