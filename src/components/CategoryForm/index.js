@@ -3,44 +3,37 @@ import { Container, Row, Col, Button, Form } from "reactstrap";
 import useAuth from "../../hooks/useAuth";
 import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
-import validateFields from "./formArticle.validator";
+import validateFields from "./formCategory.validator";
 import { useHistory, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchCreateArticle,
-  fetchUpdateArticle,
-} from "../../store/articles/articles.slice";
+  fetchCreateCategory,
+  fetchUpdateCategory,
+} from "../../store/categories/categories.slice";
 import { getLoading } from "../../store/api/api.selectors";
-import SelectCategorie from "../SelectCategorie";
-import { getArticle } from "../../store/articles/articles.selector";
+import { getCategory } from "../../store/categories/categories.selector";
 import FormInput from "../FormInput";
 
 const ArticleForm = () => {
   const { id } = useParams();
-  const article = useSelector(getArticle(id));
+  const category = useSelector(getCategory(id));
   const { user } = useAuth();
   const dispatch = useDispatch();
   const history = useHistory();
-  const isLoading = useSelector(getLoading("articleActions"));
+  const isLoading = useSelector(getLoading("categoryActions"));
   const [formData, setFormData] = useState(
-    article
+    category
       ? {
-          ...article,
+          ...category,
         }
       : {
           nom: "",
           image: "",
-          description: "",
-          prix: "",
-          categorie_id: "",
         }
   );
   const [formError, setFormError] = useState({
     nom: "",
     image: "",
-    description: "",
-    prix: "",
-    categorie_id: "",
   });
 
   const onChange = (e) => {
@@ -64,19 +57,16 @@ const ArticleForm = () => {
     );
 
     if (!validation) {
-      article
+      category
         ? dispatch(
-            fetchUpdateArticle({
+            fetchUpdateCategory({
               ...formData,
             })
           )
         : dispatch(
-            fetchCreateArticle({
+            fetchCreateCategory({
               ...formData,
-              prix: parseInt(formData.prix),
-              categorie_id: parseInt(formData.categorie_id),
               user_id: user.id,
-              created_at: new Date(),
             })
           );
       history.goBack(-1);
@@ -87,10 +77,10 @@ const ArticleForm = () => {
     <Container>
       <Row>
         <Col lg="6" className="m-auto pt-5">
-          {article ? (
-            <h1>Modifier l'article</h1>
+          {category ? (
+            <h1>Modifier la catégorie</h1>
           ) : (
-            <h1>Ajouter un nouvel article</h1>
+            <h1>Ajouter une nouvelle catégorie</h1>
           )}
           <hr />
           <Form onSubmit={onSubmit} className="mt-5">
@@ -99,8 +89,7 @@ const ArticleForm = () => {
               type="text"
               name="nom"
               id="nom"
-              placeholder="iMac"
-              value={formData.nom}
+              placeholder="iPhone"
               onChange={onChange}
               error={formError.nom}
             />
@@ -114,33 +103,8 @@ const ArticleForm = () => {
               onChange={onChange}
               error={formError.image}
             />
-            <FormInput
-              label="Description"
-              type="text"
-              name="description"
-              id="description"
-              placeholder="Caractéristiques du produit"
-              value={formData.description}
-              onChange={onChange}
-              error={formError.description}
-            />
-            <FormInput
-              label="Prix"
-              type="number"
-              name="prix"
-              id="prix"
-              placeholder="399"
-              value={formData.prix}
-              onChange={onChange}
-              error={formError.prix}
-            />
-            <SelectCategorie
-              value={formData.categorie_id}
-              onChange={onChange}
-              error={formError.categorie_id}
-            />
             <Button type="submit" disabled={isLoading} className="w-100">
-              {article ? "Modifier" : "Ajouter"}
+              {category ? "Modifier" : "Ajouter"}
             </Button>
           </Form>
         </Col>
