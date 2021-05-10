@@ -46,8 +46,8 @@ Utilisateur admin
 - [x] Articles
 - [x] Article
 - [ ] Accueil
-- [ ] Register
-- [ ] Login
+- [x] Register
+- [x] Login
 - [x] Edition d'articles
 - [x] Creation d'articles
 
@@ -59,8 +59,8 @@ Utilisateur admin
 
 ### Profile
 
-- [ ] Afficher toutes les informations de l'utilisateur (nom, prénom, âge, photo de profil)
-- [ ] Bouton permettant à l'utilisateur de modifier son profil
+- [x] Afficher toutes les informations de l'utilisateur (nom, prénom, âge, photo de profil)
+- [x] Bouton permettant à l'utilisateur de modifier son profil
 
 ### Articles
 
@@ -100,7 +100,7 @@ Utilisateur admin
 ## Bonus
 
 - [x] Rechercher un article
-- [ ] Filtrer par catégorie
+- [x] Filtrer par catégorie
 
 ## Model
 
