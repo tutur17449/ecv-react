@@ -45,7 +45,7 @@ Utilisateur admin
 - [x] Edition profile
 - [x] Articles
 - [x] Article
-- [ ] Accueil
+- [x] Accueil
 - [x] Register
 - [x] Login
 - [x] Edition d'articles
@@ -112,9 +112,9 @@ Utilisateur admin
 
 ## Pages
 
-- [ ] Creation de categories
-- [ ] Edition de categories
+- [x] Creation de categories
+- [x] Edition de categories
 
 ### Accueil
 
-- [ ] Afficher toutes les catégories (seul la personne ayant creer la categorie peut la supprimer)
+- [x] Afficher toutes les catégories (seul la personne ayant creer la categorie peut la supprimer)
