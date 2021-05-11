@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col, Button, Form } from "reactstrap";
+import { BsFillTrashFill } from "react-icons/bs";
 import useAuth from "../../hooks/useAuth";
 import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
@@ -9,12 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCreateCategory,
   fetchUpdateCategory,
+  fetchDeleteCategory,
 } from "../../store/categories/categories.slice";
 import { getLoading } from "../../store/api/api.selectors";
 import { getCategory } from "../../store/categories/categories.selector";
 import FormInput from "../FormInput";
+import "./styles.scss";
 
-const ArticleForm = () => {
+const CategoryForm = () => {
   const { id } = useParams();
   const category = useSelector(getCategory(id));
   const { user } = useAuth();
@@ -43,8 +46,6 @@ const ArticleForm = () => {
       [name]: value,
     });
     formFieldValidator(name, value, validateFields, setFormError, formError);
-    console.log(formData);
-    console.log(formError);
   };
 
   const onSubmit = (e) => {
@@ -73,12 +74,24 @@ const ArticleForm = () => {
     }
   };
 
+  const handleDelete = () => {
+    dispatch(
+      fetchDeleteCategory(id)
+    )
+    history.goBack(-1);
+  }
+
   return (
     <Container>
       <Row>
         <Col lg="6" className="m-auto pt-5">
           {category ? (
-            <h1>Modifier la catégorie</h1>
+            <h1>
+              Modifier la catégorie
+              <Button type="button" onClick={handleDelete} disabled={isLoading} color="danger" className="button-delete-category">
+                <BsFillTrashFill className="icon" />
+              </Button>
+            </h1>
           ) : (
             <h1>Ajouter une nouvelle catégorie</h1>
           )}
@@ -90,6 +103,7 @@ const ArticleForm = () => {
               name="nom"
               id="nom"
               placeholder="iPhone"
+              value={formData.nom}
               onChange={onChange}
               error={formError.nom}
             />
@@ -113,4 +127,4 @@ const ArticleForm = () => {
   );
 };
 
-export default ArticleForm;
+export default CategoryForm;

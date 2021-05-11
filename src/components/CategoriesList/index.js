@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "reactstrap";
 import { getLoading } from "../../store/api/api.selectors";
+import useAuth from "../../hooks/useAuth";
 import {
   getCategories,
   getIsInit,
@@ -11,6 +12,7 @@ import CardCategorie from "../CardCategorie";
 import Spin from "../Spin";
 
 const CategoriesList = () => {
+  const { user } = useAuth();
   const dispatch = useDispatch();
   const isInit = useSelector(getIsInit);
   const isLoading = useSelector(getLoading("getInitialCategories"));
@@ -21,6 +23,10 @@ const CategoriesList = () => {
       dispatch(fetchInitialCategories());
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchInitialCategories());
+  }, [isInit])
 
   if (!isInit || isLoading) {
     return (
@@ -44,7 +50,7 @@ const CategoriesList = () => {
   return (
     <Row>
       {categories.map((i) => (
-        <CardCategorie key={i.id} data={i} />
+        <CardCategorie key={i.id} data={i} isAuthor={user && user.id === i.user_id} />
       ))}
     </Row>
   );

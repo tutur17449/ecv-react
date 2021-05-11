@@ -1,5 +1,10 @@
+import withAuth from "../../hoc/withAuth";
+import CategoryForm from "../../components/CategoryForm";
+
 const EditCategorie = () => {
-  return <h1>EditCategorie</h1>;
+  return (
+    <CategoryForm />
+  );
 };
 
-export default EditCategorie;
+export default withAuth(EditCategorie);
