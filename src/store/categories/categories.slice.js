@@ -25,7 +25,6 @@ const categoriesSlice = createSlice({
       }
     },
     SET_DELETE_CATEGORY: (state, { payload }) => {
-      console.log(state.categoriesList, payload);
       state.categoriesList = [
         ...state.categoriesList.filter((i) => i.id !== payload.id),
       ];

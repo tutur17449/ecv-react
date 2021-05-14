@@ -5,16 +5,11 @@ import formValidator from "../../helpers/formValidator";
 import formFieldValidator from "../../helpers/formFieldValidator";
 import validateFields from "./formRegister.validator";
 import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import FormInput from "../FormInput";
-import {
-  fetchUpdateUser,
-} from "../../store/users/users.slice";
 
-const RegisterForm = ({ user, setUser, setIsUpdating }) => {
-  const dispatch = useDispatch();
-  const { register } = useAuth();
+const RegisterForm = ({ user, setIsUpdating }) => {
+  const { register, updateUser } = useAuth();
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [globalError, setGlobalError] = useState({
@@ -68,16 +63,17 @@ const RegisterForm = ({ user, setUser, setIsUpdating }) => {
 
     if (!validation) {
       setIsLoading(true);
-      if(user) {
-        dispatch(
-          fetchUpdateUser({
-            ...formData,
-          })
-        );
-        setUser(formData);
-        setIsUpdating(false);
-        history.push("/profile");
-        console.log(formData);
+      if (user) {
+        try {
+          await updateUser(formData);
+          setIsUpdating(false);
+        } catch (err) {
+          setGlobalError({
+            visible: true,
+            message: err?.message ?? "Une erreur est survenue",
+          });
+          setIsLoading(false);
+        }
       } else {
         try {
           await register(formData);
@@ -111,81 +107,121 @@ const RegisterForm = ({ user, setUser, setIsUpdating }) => {
               {globalError.message}
             </Alert>
           )}
-          
-          {user ? (
-            <h1>Modifier votre profil</h1>
-          ) : (
-            <h1>Veuillez vous inscrire</h1>
-          )}
-
           <hr />
-          <Form onSubmit={onSubmit} className="mt-5">
-            <FormInput
-              label="Email"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="john.doe@example.com"
-              value={formData.email}
-              onChange={onChange}
-              error={formError.email}
-            />
-            
-            {user 
-            ? ""
-            : <FormInput
-                label="Mot de passe"
-                type="password"
-                name="password"
-                id="password"
-                placeholder="******"
-                value={formData.password}
-                onChange={onChange}
-                error={formError.password}
-              />
-            }
-            
-            <FormInput
-              label="Prénom"
-              type="text"
-              name="prenom"
-              id="prenom"
-              placeholder="John"
-              value={formData.prenom}
-              onChange={onChange}
-              error={formError.prenom}
-            />
-            <FormInput
-              label="Nom"
-              type="text"
-              name="nom"
-              id="nom"
-              placeholder="Doe"
-              value={formData.nom}
-              onChange={onChange}
-              error={formError.nom}
-            />
-            <FormInput
-              label="Image"
-              type="text"
-              name="image"
-              id="image"
-              placeholder="https://ma-photo-de-profil.fr"
-              value={formData.image}
-              onChange={onChange}
-              error={formError.image}
-            />
-            <Button type="submit" disabled={isLoading} className="w-100">
-              {user ? "Modifier" : "Inscription"}
-            </Button>
-          </Form>
           {user ? (
-            ''
+            <>
+              <h1>Modifier votre profil</h1>
+              <Form onSubmit={onSubmit} className="mt-5">
+                <FormInput
+                  label="Email"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="john.doe@example.com"
+                  value={formData.email}
+                  onChange={onChange}
+                  error={formError.email}
+                />
+                <FormInput
+                  label="Prénom"
+                  type="text"
+                  name="prenom"
+                  id="prenom"
+                  placeholder="John"
+                  value={formData.prenom}
+                  onChange={onChange}
+                  error={formError.prenom}
+                />
+                <FormInput
+                  label="Nom"
+                  type="text"
+                  name="nom"
+                  id="nom"
+                  placeholder="Doe"
+                  value={formData.nom}
+                  onChange={onChange}
+                  error={formError.nom}
+                />
+                <FormInput
+                  label="Image"
+                  type="text"
+                  name="image"
+                  id="image"
+                  placeholder="https://ma-photo-de-profil.fr"
+                  value={formData.image}
+                  onChange={onChange}
+                  error={formError.image}
+                />
+                <Button type="submit" disabled={isLoading} className="w-100">
+                  Modifier
+                </Button>
+              </Form>
+            </>
           ) : (
-            <div>
-              <span>Déjà inscrit ? </span>
-              <Link to="/login">connectez-vous</Link>
-            </div>
+            <>
+              <h1>Veuillez vous inscrire</h1>
+              <Form onSubmit={onSubmit} className="mt-5">
+                <FormInput
+                  label="Email"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="john.doe@example.com"
+                  value={formData.email}
+                  onChange={onChange}
+                  error={formError.email}
+                />
+
+                <FormInput
+                  label="Mot de passe"
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="******"
+                  value={formData.password}
+                  onChange={onChange}
+                  error={formError.password}
+                />
+
+                <FormInput
+                  label="Prénom"
+                  type="text"
+                  name="prenom"
+                  id="prenom"
+                  placeholder="John"
+                  value={formData.prenom}
+                  onChange={onChange}
+                  error={formError.prenom}
+                />
+                <FormInput
+                  label="Nom"
+                  type="text"
+                  name="nom"
+                  id="nom"
+                  placeholder="Doe"
+                  value={formData.nom}
+                  onChange={onChange}
+                  error={formError.nom}
+                />
+                <FormInput
+                  label="Image"
+                  type="text"
+                  name="image"
+                  id="image"
+                  placeholder="https://ma-photo-de-profil.fr"
+                  value={formData.image}
+                  onChange={onChange}
+                  error={formError.image}
+                />
+                <Button type="submit" disabled={isLoading} className="w-100">
+                  Inscription
+                </Button>
+              </Form>
+              <div>
+                <span>Déjà inscrit ? </span>
+                <Link to="/login">connectez-vous</Link>
+              </div>
+            </>
           )}
         </Col>
       </Row>

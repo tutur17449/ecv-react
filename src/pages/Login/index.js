@@ -1,7 +1,8 @@
 import LoginForm from "../../components/LoginForm";
+import withNoAuth from "../../hoc/withNoAuth";
 
 const Login = () => {
   return <LoginForm />;
 };
 
-export default Login;
+export default withNoAuth(Login);

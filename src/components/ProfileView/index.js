@@ -7,15 +7,15 @@ import CardUser from "../CardUser";
 
 const ProfileView = () => {
   const { user } = useAuth();
-  const [currentUser, setCurrentUser] = useState(user);
   const [isUpdating, setIsUpdating] = useState(false);
 
   return (
     <div>
-      {isUpdating 
-        ? <RegisterForm user={currentUser} setUser={setCurrentUser} setIsUpdating={setIsUpdating} />
-        : <CardUser user={currentUser} setIsUpdating={setIsUpdating} />
-      } 
+      {isUpdating ? (
+        <RegisterForm user={user} setIsUpdating={setIsUpdating} />
+      ) : (
+        <CardUser user={user} setIsUpdating={setIsUpdating} />
+      )}
     </div>
   );
 };

@@ -29,6 +29,15 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const updateUser = async (formData) => {
+    delete formData.password;
+    return httpClient
+      .patch(`/api/users/${formData.id}`, formData)
+      .then((res) => {
+        setUser(res.data);
+      });
+  };
+
   useEffect(() => {
     (async function () {
       try {
@@ -46,7 +55,9 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, register, checkAuth, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, register, checkAuth, logout, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
