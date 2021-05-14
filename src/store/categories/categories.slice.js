@@ -25,6 +25,7 @@ const categoriesSlice = createSlice({
       }
     },
     SET_DELETE_CATEGORY: (state, { payload }) => {
+      console.log(state.categoriesList, payload);
       state.categoriesList = [
         ...state.categoriesList.filter((i) => i.id !== payload.id),
       ];
@@ -32,7 +33,7 @@ const categoriesSlice = createSlice({
   },
 });
 
-export const { 
+export const {
   SET_CATEGORIES,
   SET_NEW_CATEGORY,
   SET_UPDATE_CATEGORY,

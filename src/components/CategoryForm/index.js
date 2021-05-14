@@ -74,12 +74,10 @@ const CategoryForm = () => {
     }
   };
 
-  const handleDelete = () => {
-    dispatch(
-      fetchDeleteCategory(id)
-    )
+  const handleDelete = (id) => {
+    dispatch(fetchDeleteCategory(id));
     history.goBack(-1);
-  }
+  };
 
   return (
     <Container>
@@ -88,7 +86,13 @@ const CategoryForm = () => {
           {category ? (
             <h1>
               Modifier la catégorie
-              <Button type="button" onClick={handleDelete} disabled={isLoading} color="danger" className="button-delete-category">
+              <Button
+                type="button"
+                onClick={() => handleDelete(formData?.id)}
+                disabled={isLoading}
+                color="danger"
+                className="button-delete-category"
+              >
                 <BsFillTrashFill className="icon" />
               </Button>
             </h1>

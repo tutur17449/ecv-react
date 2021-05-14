@@ -24,10 +24,6 @@ const CategoriesList = () => {
     }
   }, []);
 
-  useEffect(() => {
-    dispatch(fetchInitialCategories());
-  }, [isInit])
-
   if (!isInit || isLoading) {
     return (
       <Row>
@@ -50,7 +46,11 @@ const CategoriesList = () => {
   return (
     <Row>
       {categories.map((i) => (
-        <CardCategorie key={i.id} data={i} isAuthor={user && user.id === i.user_id} />
+        <CardCategorie
+          key={i.id}
+          data={i}
+          isAuthor={user && user.id === i.user_id}
+        />
       ))}
     </Row>
   );
